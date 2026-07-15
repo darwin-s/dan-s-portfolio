@@ -4,8 +4,8 @@ export type AppProps = {
   title: string;
   iconUrl: string;
   isFocused: boolean;
-  onClose: () => void;
-  onFocus: () => void;
+  onCloseRequest: () => void;
+  onFocusRequest: () => void;
 };
 
 export type AppDefinition = {

@@ -1,6 +1,3 @@
-"use client";
-
-import { useState } from "react";
 import { useWindow } from "@/lib/hook/use-window";
 import Titlebar from "@/components/window/titlebar";
 import ResizeHandles from "@/components/window/resize-handles";
@@ -10,10 +7,11 @@ type WindowProps = {
   title: string;
   iconUrl: string;
   isFocused: boolean;
+  onCloseRequest: () => void;
+  onFocusRequest: () => void;
 };
 
 export default function Window(props: WindowProps) {
-  const [isFocused, setIsFocused] = useState<boolean>(props.isFocused);
   const {
     pos,
     size,
@@ -25,11 +23,7 @@ export default function Window(props: WindowProps) {
     onEndResize,
   } = useWindow({ x: 25, y: 25 }, { w: 30, h: 35 });
 
-  const BG_COLOR = isFocused ? `bg-neutral-400/15` : `bg-neutral-600/50`;
-
-  const onWindowPressed = (e: React.PointerEvent<HTMLDivElement>): void => {
-    if (!isFocused) setIsFocused(true);
-  };
+  const BG_COLOR = props.isFocused ? `bg-neutral-400/15` : `bg-neutral-600/50`;
 
   return (
     <div
@@ -41,12 +35,13 @@ export default function Window(props: WindowProps) {
         } as React.CSSProperties
       }
       className={`flex h-screen min-h-32 w-screen min-w-64 flex-col rounded-lg border border-neutral-700/60 ${BG_COLOR} backdrop-blur-lg md:absolute md:h-(--win-h) md:w-(--win-w) md:transform-(--win-transform)`}
-      onPointerDown={onWindowPressed}
+      onPointerDown={props.onFocusRequest}
     >
       <Titlebar
         title={props.title}
         iconUrl={props.iconUrl}
-        isFocused={isFocused}
+        isFocused={props.isFocused}
+        onCloseRequest={props.onCloseRequest}
         onStartDrag={onStartDrag}
         onDrag={onDrag}
         onEndDrag={onEndDrag}

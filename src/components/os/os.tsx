@@ -1,12 +1,48 @@
+"use client";
+
 import Desktop from "@/components/desktop/desktop";
 import Taskbar from "@/components/taskbar/taskbar";
-import Window from "@/components/window/window";
+import { useAppManager } from "@/lib/hook/use-app-manager";
+import { APP_REGISTRY } from "@/lib/app/app-registry";
 
 export default function Os() {
+  const { apps, open, close, isFocused, focus } = useAppManager();
+
+  const onOpenRequest = (id: string): void => {
+    open(id);
+  };
+
+  const onCloseRequest = (id: string): void => {
+    close(id);
+  };
+
+  const onFocusRequest = (id: string): void => {
+    focus(id);
+  };
+
   return (
     <div className="relative flex h-screen w-screen flex-col overflow-hidden select-none">
-      <Desktop />
-      <Window title="Test App" iconUrl="/about-me.png" isFocused={false} />
+      <Desktop onOpenRequest={onOpenRequest} />
+
+      {apps.map((id) => {
+        const APP = APP_REGISTRY.find((entry) => entry.id === id);
+
+        if (!APP) return null;
+
+        const AppComponent = APP.component;
+
+        return (
+          <AppComponent
+            key={id}
+            title={APP.title}
+            iconUrl={APP.iconUrl}
+            isFocused={isFocused(id)}
+            onCloseRequest={() => onCloseRequest(id)}
+            onFocusRequest={() => onFocusRequest(id)}
+          />
+        );
+      })}
+
       <Taskbar />
     </div>
   );

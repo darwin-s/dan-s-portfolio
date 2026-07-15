@@ -2,7 +2,11 @@ import Image from "next/image";
 import DesktopIcon from "@/components/desktop/desktop-icon";
 import { APP_REGISTRY } from "@/lib/app/app-registry";
 
-export default function Desktop() {
+type DesktopProps = {
+  onOpenRequest: (id: string) => void;
+};
+
+export default function Desktop(props: DesktopProps) {
   const ICON_SIZE_PX = 90;
 
   return (
@@ -28,6 +32,7 @@ export default function Desktop() {
             iconUrl={app.iconUrl}
             name={app.title}
             size={ICON_SIZE_PX}
+            onOpenRequest={() => props.onOpenRequest(app.id)}
           />
         ))}
       </div>

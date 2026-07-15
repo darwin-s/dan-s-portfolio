@@ -1,4 +1,4 @@
-import { AppDefinition } from "./types";
+import { AppDefinition } from "@/lib/app/types";
 import AboutMeApp from "@/components/app/about-me";
 
 export const APP_REGISTRY: AppDefinition[] = [

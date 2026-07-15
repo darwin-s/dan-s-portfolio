@@ -1,8 +1,7 @@
+import { Side } from "@/lib/util/types";
+
 type ResizeHandlesProps = {
-  onStartResize?: (
-    e: React.PointerEvent<HTMLDivElement>,
-    side: "l" | "r" | "b" | "bl" | "br",
-  ) => void;
+  onStartResize?: (e: React.PointerEvent<HTMLDivElement>, side: Side) => void;
   onResize?: (e: React.PointerEvent<HTMLDivElement>) => void;
   onEndResize?: (e: React.PointerEvent<HTMLDivElement>) => void;
 };

@@ -23,6 +23,7 @@ type ResizeState = {
 type WindowProps = {
   children?: React.ReactNode;
   title: string;
+  iconUrl: string;
 };
 
 export default function Window(props: WindowProps) {
@@ -196,10 +197,11 @@ export default function Window(props: WindowProps) {
           "--win-h": `${size.h}vh`,
         } as React.CSSProperties
       }
-      className="flex h-screen min-h-32 w-screen min-w-32 flex-col rounded-lg border border-neutral-700/60 bg-neutral-400/15 backdrop-blur-lg md:absolute md:h-(--win-h) md:w-(--win-w) md:transform-(--win-transform)"
+      className="flex h-screen min-h-32 w-screen min-w-64 flex-col rounded-lg border border-neutral-700/60 bg-neutral-400/15 backdrop-blur-lg md:absolute md:h-(--win-h) md:w-(--win-w) md:transform-(--win-transform)"
     >
       <Titlebar
         title={props.title}
+        iconUrl={props.iconUrl}
         onStartDrag={onStartDrag}
         onDrag={onDrag}
         onEndDrag={onEndDrag}

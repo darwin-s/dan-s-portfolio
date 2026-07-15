@@ -1,5 +1,8 @@
+import Image from "next/image";
+
 type TitlebarProps = {
   title: string;
+  iconUrl: string;
   onStartDrag?: (e: React.PointerEvent<HTMLDivElement>) => void;
   onDrag?: (e: React.PointerEvent<HTMLDivElement>) => void;
   onEndDrag?: (e: React.PointerEvent<HTMLDivElement>) => void;
@@ -11,14 +14,21 @@ export default function Titlebar(props: TitlebarProps) {
       onPointerDown={props.onStartDrag}
       onPointerMove={props.onDrag}
       onPointerUp={props.onEndDrag}
-      className="mt-0 mr-1 mb-2 ml-1 flex h-10 min-w-24 flex-row items-center justify-between gap-1 md:h-5"
+      className="mt-0 mr-2 ml-2 flex h-10 min-w-24 flex-row justify-between gap-1 md:h-7"
     >
-      <p className="flex h-full flex-1 items-center truncate text-xl leading-none md:text-sm">
-        {props.title}
-      </p>
+      <div className="flex h-full flex-1 items-center justify-center gap-1">
+        <Image
+          src={props.iconUrl}
+          width={32}
+          height={32}
+          alt=""
+          className="h-8 w-8 md:h-5 md:w-5"
+        />
+        <p className="flex-1 truncate text-xl md:text-sm">{props.title}</p>
+      </div>
       <div
         onPointerDown={(e) => e.stopPropagation()}
-        className="flex h-full w-24 shrink-0 flex-row items-center divide-x rounded-br-sm rounded-bl-sm border-r border-b border-l"
+        className="flex h-9 w-24 shrink-0 flex-row items-center divide-x rounded-br-sm rounded-bl-sm border-r border-b border-l md:h-5"
       >
         <button className="hidden h-full flex-1 items-center justify-center rounded-bl-sm bg-linear-to-b from-neutral-100/50 via-neutral-300/50 to-neutral-100/50 hover:from-neutral-100/70 hover:via-neutral-400/90 hover:to-neutral-100/70 active:from-neutral-300/90 active:via-neutral-500 active:to-neutral-300/90 md:flex">
           <p className="text-xs leading-none">_</p>

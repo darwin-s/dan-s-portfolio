@@ -5,7 +5,7 @@ export const APP_REGISTRY: Record<string, AppDefinition> = {
   "about-me": {
     id: "about-me",
     title: "About Me",
-    iconUrl: "",
+    iconUrl: "/about-me.png",
     component: AboutMeApp,
   },
 };

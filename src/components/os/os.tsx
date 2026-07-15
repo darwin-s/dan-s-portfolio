@@ -6,7 +6,7 @@ export default function Os() {
   return (
     <div className="relative flex h-screen w-screen flex-col overflow-hidden select-none">
       <Desktop />
-      <Window title="Test App" />
+      <Window title="Test App" iconUrl="/about-me.png" />
       <Taskbar />
     </div>
   );

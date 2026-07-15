@@ -22,10 +22,10 @@ type ResizeState = {
 
 type WindowProps = {
   children?: React.ReactNode;
-  title?: string;
+  title: string;
 };
 
-export default function Window({ children, title = "" }: WindowProps) {
+export default function Window(props: WindowProps) {
   const [pos, setPos] = useState<Pos>({ x: 30, y: 30 });
   const [size, setSize] = useState<Size>({ w: 25, h: 20 });
   const moveState = useRef<MoveState>({
@@ -199,7 +199,7 @@ export default function Window({ children, title = "" }: WindowProps) {
       className="flex h-screen min-h-32 w-screen min-w-32 flex-col rounded-lg border border-neutral-700/60 bg-neutral-400/15 backdrop-blur-lg md:absolute md:h-(--win-h) md:w-(--win-w) md:transform-(--win-transform)"
     >
       <Titlebar
-        title={title}
+        title={props.title}
         onStartDrag={onStartDrag}
         onDrag={onDrag}
         onEndDrag={onEndDrag}
@@ -210,7 +210,7 @@ export default function Window({ children, title = "" }: WindowProps) {
         onEndResize={onEndResize}
       />
       <div className="mt-0 mr-2 mb-2 ml-2 flex-1 bg-neutral-200">
-        {children}
+        {props.children}
       </div>
     </div>
   );

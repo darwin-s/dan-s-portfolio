@@ -5,21 +5,16 @@ type TitlebarProps = {
   onEndDrag?: (e: React.PointerEvent<HTMLDivElement>) => void;
 };
 
-export default function Titlebar({
-  title,
-  onStartDrag,
-  onDrag,
-  onEndDrag,
-}: TitlebarProps) {
+export default function Titlebar(props: TitlebarProps) {
   return (
     <div
-      onPointerDown={onStartDrag}
-      onPointerMove={onDrag}
-      onPointerUp={onEndDrag}
+      onPointerDown={props.onStartDrag}
+      onPointerMove={props.onDrag}
+      onPointerUp={props.onEndDrag}
       className="mt-0 mr-1 mb-2 ml-1 flex h-10 min-w-24 flex-row items-center justify-between gap-1 md:h-5"
     >
       <p className="flex h-full flex-1 items-center truncate text-xl leading-none md:text-sm">
-        {title}
+        {props.title}
       </p>
       <div
         onPointerDown={(e) => e.stopPropagation()}

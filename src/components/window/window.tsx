@@ -189,12 +189,14 @@ export default function Window({ children, title = "" }: WindowProps) {
 
   return (
     <div
-      style={{
-        "--win-transform": `translate(${pos.x}vw, ${pos.y}vh)`,
-        "--win-w": `${size.w}vw`,
-        "--win-h": `${size.h}vh`,
-      } as React.CSSProperties}
-      className="md:absolute flex flex-col bg-neutral-400/15 border border-neutral-700/60 rounded-lg backdrop-blur-lg min-w-32 min-h-32 h-screen w-screen md:transform-(--win-transform) md:w-(--win-w) md:h-(--win-h)"
+      style={
+        {
+          "--win-transform": `translate(${pos.x}vw, ${pos.y}vh)`,
+          "--win-w": `${size.w}vw`,
+          "--win-h": `${size.h}vh`,
+        } as React.CSSProperties
+      }
+      className="flex h-screen min-h-32 w-screen min-w-32 flex-col rounded-lg border border-neutral-700/60 bg-neutral-400/15 backdrop-blur-lg md:absolute md:h-(--win-h) md:w-(--win-w) md:transform-(--win-transform)"
     >
       <Titlebar
         title={title}
@@ -207,7 +209,7 @@ export default function Window({ children, title = "" }: WindowProps) {
         onResize={onResize}
         onEndResize={onEndResize}
       />
-      <div className="mt-0 ml-2 mr-2 mb-2 flex-1 bg-neutral-200">
+      <div className="mt-0 mr-2 mb-2 ml-2 flex-1 bg-neutral-200">
         {children}
       </div>
     </div>

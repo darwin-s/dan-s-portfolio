@@ -1,0 +1,11 @@
+# NextJS
+.next
+
+# Node
+node_modules
+
+# Wrangler
+.wrangler
+
+# IDE
+.vscode

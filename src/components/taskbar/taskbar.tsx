@@ -29,7 +29,7 @@ export default function Taskbar() {
   });
 
   return (
-    <div className="md:absolute bottom-0 left-0 w-full h-10 flex flex-row justify-between items-center select-none pl-2 pr-5 pt-1 pb-1 bg-neutral-400/15 border-t border-neutral-700/60 backdrop-blur-lg">
+    <div className="bottom-0 left-0 flex h-10 w-full flex-row items-center justify-between border-t border-neutral-700/60 bg-neutral-400/15 pt-1 pr-5 pb-1 pl-2 backdrop-blur-lg select-none md:absolute">
       <Image
         src="/start.png"
         width={32}
@@ -37,7 +37,7 @@ export default function Taskbar() {
         alt="Start Icon"
         loading="eager"
       />
-      <div className="flex flex-col justify-center items-end select-none text-xs">
+      <div className="flex flex-col items-end justify-center text-xs select-none">
         <span>{localTime}</span>
         <span>{localDate}</span>
       </div>

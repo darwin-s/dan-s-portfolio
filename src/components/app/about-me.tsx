@@ -9,6 +9,10 @@ export default function AboutMe(props: AppProps) {
       isFocused={props.isFocused}
       onCloseRequest={props.onCloseRequest}
       onFocusRequest={props.onFocusRequest}
-    ></Window>
+    >
+      <article className="prose prose-neutral prose-lg m-2 max-w-none">
+        <h1>About Me:</h1>
+      </article>
+    </Window>
   );
 }

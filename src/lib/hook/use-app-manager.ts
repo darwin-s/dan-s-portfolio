@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { APP_REGISTRY } from "@/lib/app/app-registry";
+import { AppRegistry } from "@/lib/app/app-registry";
 
 export function useAppManager() {
-  const APP_IDS = APP_REGISTRY.map((entry) => entry.id);
+  const appIds = AppRegistry.map((entry) => entry.id);
   const [apps, setApps] = useState<string[]>([]);
 
   const open = (id: string): void => {
-    if (!APP_IDS.includes(id)) return;
+    if (!appIds.includes(id)) return;
 
     setApps((prev) => {
       const filtered = prev.filter((prevId) => prevId !== id);

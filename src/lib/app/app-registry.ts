@@ -1,7 +1,7 @@
 import { AppDefinition } from "@/lib/app/types";
 import AboutMeApp from "@/components/app/about-me";
 
-export const APP_REGISTRY: AppDefinition[] = [
+export const AppRegistry: AppDefinition[] = [
   {
     id: "about-me",
     title: "About Me",

@@ -3,7 +3,7 @@
 import Desktop from "@/components/desktop/desktop";
 import Taskbar from "@/components/taskbar/taskbar";
 import { useAppManager } from "@/lib/hook/use-app-manager";
-import { APP_REGISTRY } from "@/lib/app/app-registry";
+import { AppRegistry } from "@/lib/app/app-registry";
 
 export default function Os() {
   const { apps, open, close, isFocused, focus } = useAppManager();
@@ -25,7 +25,7 @@ export default function Os() {
       <Desktop onOpenRequest={onOpenRequest} />
 
       {apps.map((id) => {
-        const APP = APP_REGISTRY.find((entry) => entry.id === id);
+        const APP = AppRegistry.find((entry) => entry.id === id);
 
         if (!APP) return null;
 

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import DesktopIcon from "@/components/desktop/desktop-icon";
-import { APP_REGISTRY } from "@/lib/app/app-registry";
+import { AppRegistry } from "@/lib/app/app-registry";
 
 type DesktopProps = {
   onOpenRequest: (id: string) => void;
@@ -27,7 +27,7 @@ export default function Desktop(props: DesktopProps) {
         }}
         className="absolute inset-0 grid grid-flow-col justify-start gap-2 p-4"
       >
-        {APP_REGISTRY.map((app) => (
+        {AppRegistry.map((app) => (
           <DesktopIcon
             key={app.id}
             iconUrl={app.iconUrl}

@@ -6,7 +6,7 @@ import { useAppManager } from "@/lib/hook/use-app-manager";
 import { AppRegistry } from "@/lib/app/app-registry";
 
 export default function Os() {
-  const { apps, open, close, isFocused, focus } = useAppManager();
+  const { apps, open, close, isFocused, focus, getZ } = useAppManager();
 
   const onOpenRequest = (id: string): void => {
     open(id);
@@ -37,6 +37,7 @@ export default function Os() {
             title={APP.title}
             iconUrl={APP.iconUrl}
             isFocused={isFocused(id)}
+            zIndex={getZ(id)}
             onCloseRequest={() => onCloseRequest(id)}
             onFocusRequest={() => onFocusRequest(id)}
           />

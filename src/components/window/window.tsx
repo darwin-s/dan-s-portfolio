@@ -7,6 +7,7 @@ type WindowProps = {
   title: string;
   iconUrl: string;
   isFocused: boolean;
+  zIndex: number;
   onCloseRequest: () => void;
   onFocusRequest: () => void;
 };
@@ -32,9 +33,10 @@ export default function Window(props: WindowProps) {
           "--win-transform": `translate(${pos.x}vw, ${pos.y}vh)`,
           "--win-w": `${size.w}vw`,
           "--win-h": `${size.h}vh`,
+          "--z-index": `${props.zIndex}`,
         } as React.CSSProperties
       }
-      className={`flex h-screen min-h-32 w-screen min-w-64 flex-col rounded-lg border border-neutral-700/60 ${BG_COLOR} backdrop-blur-lg md:absolute md:h-(--win-h) md:w-(--win-w) md:transform-(--win-transform)`}
+      className={`z-(--z-index) flex h-screen min-h-32 w-screen min-w-64 flex-col rounded-lg border border-neutral-700/60 ${BG_COLOR} backdrop-blur-lg md:absolute md:h-(--win-h) md:w-(--win-w) md:transform-(--win-transform)`}
       onPointerDown={props.onFocusRequest}
     >
       <Titlebar

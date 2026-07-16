@@ -7,6 +7,7 @@ export default function AboutMe(props: AppProps) {
       title={props.title}
       iconUrl={props.iconUrl}
       isFocused={props.isFocused}
+      zIndex={props.zIndex}
       onCloseRequest={props.onCloseRequest}
       onFocusRequest={props.onFocusRequest}
     >

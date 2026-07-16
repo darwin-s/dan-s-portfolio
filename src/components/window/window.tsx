@@ -51,7 +51,7 @@ export default function Window(props: WindowProps) {
         onResize={onResize}
         onEndResize={onEndResize}
       />
-      <div className="mt-0 mr-2 mb-2 ml-2 flex-1 bg-neutral-200">
+      <div className="mt-0 mr-2 mb-2 ml-2 flex-1 overflow-auto bg-neutral-200">
         {props.children}
       </div>
     </div>

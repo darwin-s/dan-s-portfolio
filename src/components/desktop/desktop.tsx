@@ -17,6 +17,7 @@ export default function Desktop(props: DesktopProps) {
         quality={100}
         alt=""
         loading="eager"
+        preload={true}
         className="-z-20 object-cover object-center"
       />
       <div

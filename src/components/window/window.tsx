@@ -24,7 +24,11 @@ export default function Window(props: WindowProps) {
     onEndResize,
   } = useWindow({ x: 25, y: 25 }, { w: 30, h: 35 });
 
-  const BG_COLOR = props.isFocused ? `bg-neutral-400/15` : `bg-neutral-600/50`;
+  const BG_COLOR = props.isFocused ? `bg-neutral-600/50` : `bg-neutral-400/15`;
+  const SHADOW = props.isFocused
+    ? `md:shadow-lg md:shadow-neutral-800`
+    : `md:shadow-sm md:shadow-neutral-800`;
+  const DISPLAY = props.isFocused ? `flex` : `hidden md:flex`;
 
   return (
     <div
@@ -36,7 +40,7 @@ export default function Window(props: WindowProps) {
           "--z-index": `${props.zIndex}`,
         } as React.CSSProperties
       }
-      className={`z-(--z-index) flex h-screen min-h-32 w-screen min-w-64 flex-col rounded-lg border border-neutral-700/60 ${BG_COLOR} backdrop-blur-lg md:absolute md:h-(--win-h) md:w-(--win-w) md:transform-(--win-transform)`}
+      className={`z-(--z-index) ${DISPLAY} h-screen min-h-32 w-screen min-w-64 flex-col rounded-lg border border-neutral-700/60 ${SHADOW} ${BG_COLOR} backdrop-blur-lg md:absolute md:h-(--win-h) md:w-(--win-w) md:transform-(--win-transform)`}
       onPointerDown={props.onFocusRequest}
     >
       <Titlebar

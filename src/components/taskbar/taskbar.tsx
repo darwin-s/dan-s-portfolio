@@ -29,7 +29,7 @@ export default function Taskbar() {
   });
 
   return (
-    <div className="bottom-0 left-0 flex h-10 w-full flex-row items-center justify-between border-t border-neutral-700/60 bg-neutral-400/15 pt-1 pr-5 pb-1 pl-2 backdrop-blur-lg select-none md:absolute">
+    <div className="bottom-0 left-0 z-50 flex h-10 w-full flex-row items-center justify-between border-t border-neutral-700/60 bg-neutral-400/15 pt-1 pr-5 pb-1 pl-2 backdrop-blur-lg select-none">
       <Image
         src="/start.png"
         width={32}

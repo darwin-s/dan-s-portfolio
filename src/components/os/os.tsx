@@ -22,28 +22,29 @@ export default function Os() {
 
   return (
     <div className="relative flex h-screen w-screen flex-col overflow-hidden select-none">
-      <Desktop onOpenRequest={onOpenRequest} />
+      <div className="flex-1">
+        <Desktop onOpenRequest={onOpenRequest} />
 
-      {apps.map((id) => {
-        const APP = AppRegistry.find((entry) => entry.id === id);
+        {apps.map((id) => {
+          const APP = AppRegistry.find((entry) => entry.id === id);
 
-        if (!APP) return null;
+          if (!APP) return null;
 
-        const AppComponent = APP.component;
+          const AppComponent = APP.component;
 
-        return (
-          <AppComponent
-            key={id}
-            title={APP.title}
-            iconUrl={APP.iconUrl}
-            isFocused={isFocused(id)}
-            zIndex={getZ(id)}
-            onCloseRequest={() => onCloseRequest(id)}
-            onFocusRequest={() => onFocusRequest(id)}
-          />
-        );
-      })}
-
+          return (
+            <AppComponent
+              key={id}
+              title={APP.title}
+              iconUrl={APP.iconUrl}
+              isFocused={isFocused(id)}
+              zIndex={getZ(id)}
+              onCloseRequest={() => onCloseRequest(id)}
+              onFocusRequest={() => onFocusRequest(id)}
+            />
+          );
+        })}
+      </div>
       <Taskbar />
     </div>
   );

@@ -40,7 +40,7 @@ export default function Window(props: WindowProps) {
           "--z-index": `${props.zIndex}`,
         } as React.CSSProperties
       }
-      className={`z-(--z-index) ${DISPLAY} h-screen min-h-32 w-screen min-w-64 flex-col rounded-lg border border-neutral-700/60 ${SHADOW} ${BG_COLOR} backdrop-blur-lg md:absolute md:h-(--win-h) md:w-(--win-w) md:transform-(--win-transform)`}
+      className={`z-(--z-index) ${DISPLAY} h-full min-h-32 w-screen min-w-64 flex-col rounded-lg border border-neutral-700/60 ${SHADOW} ${BG_COLOR} backdrop-blur-lg md:absolute md:h-(--win-h) md:w-(--win-w) md:transform-(--win-transform)`}
       onPointerDown={props.onFocusRequest}
     >
       <Titlebar
